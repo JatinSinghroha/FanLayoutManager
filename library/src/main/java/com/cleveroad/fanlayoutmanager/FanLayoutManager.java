@@ -149,7 +149,7 @@ public class FanLayoutManager extends RecyclerView.LayoutManager {
         void onItemDeselected();
     }
     
-    Callback callback = null;
+    public Callback callback = null;
     
     public FanLayoutManager(@NonNull Context context) {
         this(context, null);
