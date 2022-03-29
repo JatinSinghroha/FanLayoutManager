@@ -144,7 +144,7 @@ public class FanLayoutManager extends RecyclerView.LayoutManager {
      */
     private View mCenterView = null;
 
-    interface Callback {
+    public interface Callback {
         void onItemSelected();
         void onItemDeselected();
     }
