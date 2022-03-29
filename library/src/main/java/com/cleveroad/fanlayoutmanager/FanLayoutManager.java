@@ -144,6 +144,13 @@ public class FanLayoutManager extends RecyclerView.LayoutManager {
      */
     private View mCenterView = null;
 
+    interface Callback {
+        void onItemSelected();
+        void onItemDeselected();
+    }
+    
+    Callback callback = null;
+    
     public FanLayoutManager(@NonNull Context context) {
         this(context, null);
         mAnimationHelper = new AnimationHelperImpl();
@@ -784,7 +791,8 @@ public class FanLayoutManager extends RecyclerView.LayoutManager {
         } else {
             closeItem(recyclerView, position, scrollToPosition, delay);
         }
-
+        if (callback != null)
+            callback.onItemDeselected();
     }
 
     /**
@@ -912,6 +920,8 @@ public class FanLayoutManager extends RecyclerView.LayoutManager {
         // smooth scroll to position
         mFanCardScroller.setTargetPosition(position);
         startSmoothScroll(mFanCardScroller);
+        if (callback != null)
+            callback.onItemSelected();
     }
 
     /**
